@@ -51,6 +51,12 @@ class UserProfile(models.Model):
         ordering = ["created_at"]
         verbose_name_plural = "Profile"
 
+    def get_fullname(self) -> str:
+        return self.full_name or self.user.get_full_name()
+
+    def get_phone(self) -> str:
+        return self.phone
+
     def __str__(self) -> str:
         return f"{self.get_fullname()}"
 

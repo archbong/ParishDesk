@@ -8,7 +8,7 @@ class ChurchSerializer(serializers.ModelSerializer):
     class Meta:
         model = Church
         fields = [
-            "id", "name", "address", "district", "phone", "email", "timezone",
+            "id", "name", "address", "district", "phone", "email", "current_timezone",
             "created_by", "created_at", "updated_at",
         ]
 
@@ -53,8 +53,8 @@ class ChurchRoleSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ChurchRole
-        fields = ["id", "user", "church", "role", "role_display", "is_active", "assigned_by", "assigned_at"]
-        read_only_fields = ["id", "assigned_by", "assigned_at"]
+        fields = ["id", "user", "church", "role", "role_display", "is_active", "assigned_by", "assigned_date"]
+        read_only_fields = ["id", "assigned_by", "assigned_date"]
 
     def get_role_display(self, obj):
         return obj.get_role_display()
